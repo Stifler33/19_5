@@ -31,4 +31,5 @@ int main() {
     }
     buf.close();
     cout << count;
+    return 0;
 }
