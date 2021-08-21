@@ -7,19 +7,26 @@ int main(){
     cout << "Enter location file :";
     string location;
     cin >> location;
-    string extension = location.substr(location.size() - 3);
-    if (extension == "png" || extension == "PNG"){
+    string extension = location.substr(location.size() - 4);
+    if (extension == ".png" || extension == ".PNG"){
         cout << "extension good\n";
     }else {
-        cout << "Error extension !\n";
+        cerr << "Error extension !\n";
         return 0;
     }
     forFile.open(location, ios::binary);
-    forFile.is_open() ? cout << "File open !\n" : cout << "Error file open\n";
+    if (forFile.is_open()){
+        cout << "File open !\n";
+    }else{
+        cerr << "Error file open\n";
+        return 0;
+    }
     char buffer[4];
     forFile.seekg(1);
     forFile.read(buffer, 3);
-    cout << buffer << endl;
+    if ((string)buffer == "PNG"){
+        cout << "File PNG\n";
+    }else cerr << "File not PNG\n";
     forFile.close();
     return 0;
 }
