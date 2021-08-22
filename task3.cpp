@@ -9,6 +9,7 @@ int main() {
     buffer.open("C:\\Users\\bagi3\\ClionProjects\\19.5\\Excel.txt");
     buffer.is_open() ? cout << "File open !\n" : cout << "Error open file\n";
     int number = 0;
+    int totalNumber = 0;
     string str;
     string outputStr;
     string data;
@@ -17,6 +18,7 @@ int main() {
         getline(buffer, str, ' ');
         try{
             number = stoi(str);
+            totalNumber += number;
             getline(buffer, data, '\n');
             if (number > maxNum){
                 maxNum = number;
@@ -30,4 +32,6 @@ int main() {
         }
     }
     cout << outputStr << endl;
+    cout << "total money paid :";
+    cout << totalNumber << endl;
 }
