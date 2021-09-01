@@ -23,12 +23,12 @@ void changePoint(int &point, int step){
     }while (numberQuest.test(point));
 }
 string get_text(string textGame){
-    bufQuest.open(textGame, ios::binary);
+    bufQuest.open(textGame);
     getline(bufQuest , textGame);
+    bufQuest.close();
     return textGame;
 }
 int main(){
-
     string locationQuest;
     string locationAnswer;
     int step = 0;
@@ -43,18 +43,10 @@ int main(){
         locationAnswer = "D:\\game\\answer.txt";
         locationQuest.insert(13, to_string(point + 1));
         locationAnswer.insert(14, to_string(point + 1));
-        bufQuest.open(locationQuest, ios::binary);
-        string textGame;
-        getline(bufQuest , textGame);
-        cout << textGame << endl;
-        bufQuest.close();
+        cout << get_text(locationQuest) << endl;
         string userAnswer;
         cin >> userAnswer;
-        textGame = "";
-        bufQuest.open(locationAnswer, ios::binary);
-        getline(bufQuest , textGame);
-        bufQuest.close();
-        if (textGame == userAnswer){
+        if (get_text(locationAnswer) == userAnswer){
             cout << "Good !\n";
             scorePlayer++;
         }else {
@@ -72,4 +64,3 @@ int main(){
     }
     return 0;
 }
-
