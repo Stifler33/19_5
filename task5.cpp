@@ -1,10 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <bitset>
-#include <vector>
 using namespace std;
 bitset<13> numberQuest;
-ifstream bufQuest;
 bool EndGame(bitset<13> *numberQuest){
     //cout << *numberQuest << endl;
     for (int i = 0; i < numberQuest->size(); i++){
@@ -23,6 +21,7 @@ void changePoint(int &point, int step){
     }while (numberQuest.test(point));
 }
 string get_text(string textGame){
+    ifstream bufQuest;
     bufQuest.open(textGame);
     getline(bufQuest , textGame);
     bufQuest.close();
@@ -53,9 +52,9 @@ int main(){
             cout << "wrong answer\n";
             scoreViewer++;
         }
-            if (!numberQuest.test(point)){
-                numberQuest.set(point);
-            }
+        if (!numberQuest.test(point)){
+            numberQuest.set(point);
+        }
     }
     if (scorePlayer >= 6){
         cout << "Win player\n";
