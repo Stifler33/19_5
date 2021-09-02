@@ -7,7 +7,6 @@ int main(){
     ifstream buffer;
     while (locationFile != "no"){
         cout << "Enter location file :";
-        //cin >> locationFile;
         getline(cin,locationFile);
         buffer.open(locationFile, ios::binary);
         if(buffer.is_open()){
@@ -18,12 +17,11 @@ int main(){
         }
         while (!buffer.eof()){
             char outputText[100] = {'\0'};
-            buffer.read(outputText, 100);
-            cout << outputText << endl;
+            buffer.read(outputText, 99);
+            cout << outputText;
         }
         buffer.close();
-        cout << "open another file ?\n";
-        //cin >> locationFile;
+        cout << "\nopen another file ?\n";
         getline(cin,locationFile);
         if (locationFile == "no") {
             cout << "Goodbye !\n";
