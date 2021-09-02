@@ -15,10 +15,12 @@ int main(){
             cerr << "Error open file\n";
             continue;
         }
+        buffer.seekg(ios_base::end);
+        cout << buffer.tellg();
         while (!buffer.eof()){
             char outputText[100] = {'\0'};
             buffer.read(outputText, 99);
-            cout << outputText;
+            //cout << outputText;
         }
         buffer.close();
         cout << "\nopen another file ?\n";
