@@ -18,8 +18,8 @@ int main(){
         }
         while (!buffer.eof()){
             char outputText[100] = {'\0'};
-            buffer.read(outputText, 100);
-            cout << outputText << endl;
+            buffer.read(outputText, 99);
+            cout << outputText;
         }
         buffer.close();
         cout << "open another file ?\n";
